@@ -1,3 +1,6 @@
+DROP DATABASE IF EXISTS vaultpay;
+CREATE DATABASE vaultpay;
+
 USE vaultpay;
 
 CREATE TABLE IF NOT EXISTS users (

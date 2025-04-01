@@ -28,13 +28,9 @@ public class UserService {
                 .map(user -> {
                     user.setName(userUpdated.getName());
                     user.setEmail(userUpdated.getEmail());
-                    user.setPassword(userUpdated.getPassword());
+                    user.setPassword(passwordEncoder.encode(userUpdated.getPassword()));
                     return userRepository.save(user);
                 })
                 .orElseThrow(() -> new RuntimeException("User not found"));
-    }
-
-    public void deleteUser(Long id) {
-        userRepository.deleteById(id);
     }
 }
