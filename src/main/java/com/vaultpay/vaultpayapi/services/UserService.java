@@ -15,12 +15,16 @@ public class UserService {
     private final PasswordEncoder passwordEncoder;
 
     public User registerUser(User user) {
-        user.setPassword(passwordEncoder.encode(user.getPassword()));
+        // La contraseña ya viene codificada del controlador
         return userRepository.save(user);
     }
 
     public Optional<User> findUserById(Long id) {
         return userRepository.findById(id);
+    }
+
+    public Optional<User> findUserByEmail(String email) {
+        return userRepository.findByEmail(email);
     }
 
     public User updateUser(Long id, User userUpdated) {

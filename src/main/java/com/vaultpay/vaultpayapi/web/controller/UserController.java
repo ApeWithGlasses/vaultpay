@@ -29,6 +29,13 @@ public class UserController {
         return ResponseEntity.ok(user);
     }
 
+    @GetMapping("/email/{email}")
+    public ResponseEntity<User> getUserByEmail(@PathVariable String email) {
+        User user = userService.findUserByEmail(email)
+                .orElseThrow(() -> new RuntimeException("User not found"));
+        return ResponseEntity.ok(user);
+    }
+
     @PutMapping("/{id}")
     public ResponseEntity<User> updateUser(@PathVariable Long id, @RequestBody User userUpdated) {
         User updatedUser = userService.updateUser(id, userUpdated);
