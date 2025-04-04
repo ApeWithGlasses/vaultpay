@@ -13,7 +13,7 @@ Este es el proyecto backend de VaultPay, una aplicación desarrollada con Spring
 
 1. Clone el repositorio:
 ```bash
-git clone [URL_DEL_REPOSITORIO]
+git clone https://github.com/ApeWithGlasses/vaultpay
 cd vaultpayapi
 ```
 
