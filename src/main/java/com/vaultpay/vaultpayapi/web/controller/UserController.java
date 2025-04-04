@@ -2,6 +2,7 @@ package com.vaultpay.vaultpayapi.web.controller;
 
 import com.vaultpay.vaultpayapi.persistence.entity.User;
 import com.vaultpay.vaultpayapi.services.UserService;
+import com.vaultpay.vaultpayapi.services.dto.UserRegisterDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,7 +15,7 @@ public class UserController {
     private final UserService userService;
 
     @PostMapping("/register")
-    public ResponseEntity<User> registerUser(@RequestBody User user) {
+    public ResponseEntity<User> registerUser(@RequestBody UserRegisterDTO user) {
         if (user.getPassword() == null || user.getPassword().isEmpty()) {
             throw new RuntimeException("Password cannot be empty");
         }

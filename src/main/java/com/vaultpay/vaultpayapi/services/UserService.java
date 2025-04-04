@@ -2,6 +2,7 @@ package com.vaultpay.vaultpayapi.services;
 
 import com.vaultpay.vaultpayapi.persistence.entity.User;
 import com.vaultpay.vaultpayapi.persistence.repository.UserRepository;
+import com.vaultpay.vaultpayapi.services.dto.UserRegisterDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -14,9 +15,12 @@ public class UserService {
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
 
-    public User registerUser(User user) {
-        // La contraseña ya viene codificada del controlador
-        return userRepository.save(user);
+    public User registerUser(UserRegisterDTO user) {
+        User newUser = new User();
+        newUser.setName(user.getName());
+        newUser.setEmail(user.getEmail());
+        newUser.setPassword(passwordEncoder.encode(user.getPassword()));
+        return userRepository.save(newUser);
     }
 
     public Optional<User> findUserById(Long id) {

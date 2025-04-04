@@ -1,5 +1,6 @@
 package com.vaultpay.vaultpayapi.web.controller;
 
+import com.vaultpay.vaultpayapi.services.dto.UserRegisterDTO;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -46,10 +47,10 @@ public class JspController {
             @RequestParam String telefono,
             Model model) {
         try {
-            User newUser = new User();
+            UserRegisterDTO newUser = new UserRegisterDTO();
             newUser.setName(name);
             newUser.setEmail(email);
-            newUser.setPassword(passwordEncoder.encode(password));
+            newUser.setPassword(password);
             
             userService.registerUser(newUser);
             
